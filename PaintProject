@@ -1,0 +1,34 @@
+public class Room {
+
+    int widthOfRoom;
+    int lengthOfRoom;
+    int heightOfRoom;
+    int depthOfRoom;
+    int heightOfDoor;
+    int numOfDoor;
+    int heightOfWindow;
+    int numOfWindow;
+
+    // Constructor
+    public Room(int roomWidth, int roomLength, int roomHeight, int winHeight, int doorHeight, int numberOfWindows, int numberOfDoors) {
+        this.widthOfRoom = roomWidth;
+        this.lengthOfRoom = roomLength;
+        this.heightOfRoom = roomHeight;
+        this.heightOfWindow = winHeight;
+        this.numOfWindow = numberOfWindows;
+        this.heightOfDoor = doorHeight;
+        this.numOfDoor = numberOfDoors;
+    }
+
+    // Method to calculate paint needed for the room and doors
+    public void calculatePaintNeeded() {
+        int totalSurfaceAreaOfRoom = 2 * (widthOfRoom * heightOfRoom) + 2 * (lengthOfRoom * heightOfRoom) - (heightOfDoor * numOfDoor) - (heightOfWindow * numOfWindow);
+        int surfaceAreaOfDoors = heightOfDoor * numOfDoor;
+
+        double gallonsNeeded = totalSurfaceAreaOfRoom / 350.0;
+        double remainingQuarts = (gallonsNeeded - (int) gallonsNeeded) * 4;
+
+        // Print the results
+        System.out.println("Gallons needed for the room: " + (int) gallonsNeeded);
+        System.out.println("Quarts needed for the doors: " + remainingQuarts);
+    }
